@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Media Modern</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="img/logo.jpg" alt="Logo" class="logo">
+    <h1>🌟 Galeri Media</h1>
+  </header>
+
+  <!-- Container -->
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <h2>📁 Menu Media</h2>
+      <ul>
+        <li><a href="#" onclick="tampilkan('foto')">🖼 Foto</a></li>
+        <li><a href="#" onclick="tampilkan('video')">🎥 Video</a></li>
+        <li><a href="#" onclick="tampilkan('audio')">🎵 Audio</a></li>
+      </ul>
+    </nav>
+
+    <!-- Konten -->
+    <main class="konten fade" id="konten">
+      <h2>Selamat Datang!</h2>
+      <p>Pilih menu di sebelah kiri untuk melihat foto, video, atau audio.</p>
+      <p>"Feri Supriadi nonton balapan</p>
+      <p>gasengaja kepencet kamera depan</p>
+      <p>aku bakal maju paling depan</p>
+      <p>buat kamu sipaling masa depan"</p>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Galeri Media - Desain biru putih oleh Ariska Cela Febriana</p>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    // Animasi fade-in
+    function animasiFade() {
+      const konten = document.getElementById("konten");
+      konten.classList.remove("fade");
+      void konten.offsetWidth;
+      konten.classList.add("fade");
+    }
+
+    // Menampilkan media
+    function tampilkan(media) {
+      const konten = document.getElementById("konten");
+
+      if (media === "foto") {
+        konten.innerHTML = `
+          <h2>🖼 Foto Galeri</h2>
+          <img src="media/foto.jpg" alt="Foto Galeri" class="media-item">
+          <br>
+          <button class="btn-kembali" onclick="kembali()">⬅ Kembali ke Menu Utama</button>
+        `;
+      } 
+      else if (media === "video") {
+        konten.innerHTML = `
+          <h2>🎥 Video Player</h2>
+          <video id="videoPlayer" controls class="media-item">
+            <source src="media/video.mp4" type="video/mp4">
+          </video>
+          <br>
+          <button class="btn-kembali" onclick="kembali()">⬅ Kembali ke Menu Utama</button>
+        `;
+        const video = document.getElementById("videoPlayer");
+        video.onerror = () => alert("⚠ Maaf, video tidak dapat diputar. Pastikan file 'video.mp4' ada dan formatnya benar.");
+      } 
+      else if (media === "audio") {
+        konten.innerHTML = `
+          <h2>🎵 Audio Player</h2>
+          <audio id="audioPlayer" controls class="media-item">
+            <source src="media/audio.mp3" type="audio/mpeg">
+          </audio>
+          <br>
+          <button class="btn-kembali" onclick="kembali()">⬅ Kembali ke Menu Utama</button>
+        `;
+        const audio = document.getElementById("audioPlayer");
+        audio.onerror = () => alert("🎧 Maaf, audio tidak dapat diputar. Pastikan file 'audio.mp3' tersedia dan formatnya benar.");
+      }
+
+      animasiFade();
+    }
+
+    // Kembali ke menu utama
+    function kembali() {
+      const konten = document.getElementById("konten");
+      konten.innerHTML = `
+        <h2>Selamat Datang!</h2>
+        <p>Pilih menu di sebelah kiri untuk melihat foto, video, atau audio.</p>
+        <p>"Tak semua usaha itu dipermudahkan, tapi semua yang berusaha pasti akan berubah."</p>
+      `;
+      animasiFade();
+    }
+  </script>
+
+</body>
+</html>
